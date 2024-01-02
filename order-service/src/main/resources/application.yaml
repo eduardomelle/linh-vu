@@ -1,0 +1,39 @@
+#jpa.hibernate.ddl-auto:
+#- validate: validate the schema, makes no changes to the database.
+#- update: update the schema.
+#- create: creates the schema, destroying previous data.
+#- create-drop: drop the schema at the end of the session
+#- none: is all other cases.
+
+#sql.init.mode:
+#- always – always initialize the database
+#- embedded – always initialize if an embedded database is in use. This is the default if the property value is not specified.
+#- never – never initialize the database
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/opentelemetry
+    #url: jdbc:postgresql://localhost:5432/opentelemetry
+    username: username
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      #ddl-auto: none
+  properties:
+    hibernate:
+      format_sql: true
+      default_schema: orders
+  profiles:
+    active: dev
+  sql:
+    init:
+      mode: always
+      #mode: never
